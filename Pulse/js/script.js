@@ -38,6 +38,7 @@ $(document).ready(function(){
 	toggleSlide('.catalog-item__back');
 
 
+
 	// modal
 
 	$('[data-modal=consultation]').on('click', function () {
@@ -54,6 +55,15 @@ $(document).ready(function(){
 			$('.overlay, #order').fadeIn('slow');
 		});
 	});
+
+	$(document).on('click', function(e) {
+		if (!(
+			($(e.target).parents('.modal').length) || ($(e.target).hasClass('modal')) || ($(e.target).hasClass('button')))
+		) {
+			$('.overlay, #consultation, #order, #thanks').fadeOut('slow');
+		}
+	});
+
 
 
 	// validate
@@ -89,9 +99,13 @@ $(document).ready(function(){
 	validateForms('#consultation form');
 	validateForms('#order form');
 	
+
+
 	// Masked Input Phone
 
 	$('input[name=phone]').mask("+7 (999) 999-99-99");
+
+
 
 	// mailer
 
@@ -111,6 +125,8 @@ $(document).ready(function(){
 		return false;
 	});
 
+
+
 	// smooth scroll and pageup
 
 	$(window).scroll(function() {
@@ -126,5 +142,23 @@ $(document).ready(function(){
 		$("html, body").animate({scrollTop: $(_href).offset().top+"px"});
 		return false;
 	});
+
+
+
+	// smooth scroll to catalog
+
+	$('.promo__link a').on('click', function() {
+
+		let href = $(this).attr('href'), //забираем идентификатор блока с атрибута href
+			top = $(href).offset().top;  //узнаем высоту от начала страницы до блока на который ссылается якорь
+
+		$('body,html').animate({scrollTop: top}, 1000); //анимируем переход на расстояние - top за 1000 мс
+	});
+	
+	
+
+
+
+
 
 });
