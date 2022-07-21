@@ -1,0 +1,173 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 120px;
+  //margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 50px;
+    color: #527CCD;
+
+    h1 {
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 60px;
+    }
+
+    /* Кнопки вперед и назад */
+    .prev,
+    .next {
+      margin-left: 40px;
+      cursor: pointer;
+      width: 60px;
+      height: 60px;
+      padding: 20px 25px;
+      font-weight: bold;
+      font-size: 18px;
+      background-color: white;
+      border: 1px solid #527CCD;
+      color: #527CCD;
+
+      &:hover {
+        background-color: #C8D9FB;
+      }
+    }
+
+    /* Кружочки */
+    .dots {
+      margin: 0 20px;
+      display: flex;
+
+      &_item {
+        cursor: pointer;
+        height: 2px;
+        width: 60px;
+        background-color: #CCDDFF;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+
+        &:hover {
+          background-color: #527CCD;
+        }
+      }
+    }
+  }
+
+}
+.slider {
+  max-width: 100%;
+  display: flex;
+  margin: auto;
+  margin-top: 40px;
+
+
+  &-item {
+    width: 260px;
+    height: 420px;
+    border: 1px solid #CCDDFF;
+    padding: 20px;
+    margin-right: 40px;
+
+    img {
+      object-fit: cover;
+      width: 220px;
+      height: 160px;
+    }
+    p {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 22px;
+      color: #527CCD;
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+    &_text {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+      color: #527CCD;
+      margin-bottom: 20px;
+    }
+    &_subtext {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 22px;
+      color: #527CCD;
+      margin-bottom: 20px;
+    }
+  }
+}
+.active {
+  border: 1px solid #527CCD;
+}
+
+/* Анимация слайдов */
+
+.slider {
+  &-item {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: .4
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 760px;
+    margin: 120px 60px;
+    &-header {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 660px;
+    &-header {
+      display: flex;
+      flex-direction: column;
+      .dots{
+        margin: 20px auto;
+      }
+      .prev,
+      .next {
+        margin: 20px;
+      }
+    }
+
+  }
+}
+
+
